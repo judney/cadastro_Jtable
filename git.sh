@@ -43,16 +43,15 @@ if [ $? -ne 0 ] ; then
    sleep 2 
    exit 1 
 fi 
-git remote add origin https://judney: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@github.com/judney/cadastro_Jtable.git
 
-#git remote add origin https://github.com/judney/cadastro_Jtable.git
 #git pull https://username:password@mygithost.com/my/repository
-if [ $? -ne 0 ] ; then 
-   echo "Erro ao adicionar URL [https://github.com/judney/cadastro_Jtable.git]"
-   sleep 2 
-#  exit 1 
-fi 
-git push -u origin main
+#.if [ $? -ne 0 ] ; then 
+   #echo "Erro ao adicionar URL [https://github.com/judney/cadastro_Jtable.git]"
+   #sleep 2 
+##  exit 1 
+#fi 
+#git push -u origin main
+git push https://judney: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@github.com/judney/cadastro_Jtable.git --all
 if [ $? -ne 0 ] ; then 
    echo "Erro ao realizar o push em https://github.com/judney/cadastro_Jtable.git] "
    sleep 2 
