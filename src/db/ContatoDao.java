@@ -20,8 +20,8 @@ public class ContatoDao {
 	private final String LISTBYID = "SELECT * FROM CONTATO WHERE ID=?";
     */ 
 
-	private final String INSERT = "INSERT INTO CLIENTES (NOME, TELEFONE, EMAIL) VALUES (?,?,?)";
-	private final String UPDATE = "UPDATE CLIENTES SET NOME=?, TELEFONE=?, EMAIL=? WHERE CODIGO=?";
+	private final String INSERT = "INSERT INTO CLIENTES (NOME, TELEFONE, EMAIL, logradouro) VALUES (?,?,?, ? )";
+	private final String UPDATE = "UPDATE CLIENTES SET NOME=?, TELEFONE=?, EMAIL=? , logradouro =? WHERE CODIGO=?";
 	private final String DELETE = "DELETE FROM CLIENTES WHERE CODIGO =?";
 	private final String LIST = "SELECT * FROM CLIENTES";
 	private final String LISTBYID = "SELECT * FROM CLIENTES WHERE CODIGO=?";
@@ -38,8 +38,10 @@ public class ContatoDao {
 				pstm.setString(1, contato.getNome());
 				pstm.setString(2, contato.getTelefone());
 				pstm.setString(3, contato.getEmail());
+				pstm.setString(4,  contato.getLogradouro());
 
 				pstm.execute();
+	
 				JOptionPane.showMessageDialog(null, "Contato cadastrado com sucesso");
 				FabricaConexao.fechaConexao(conn, pstm);
 
@@ -64,7 +66,9 @@ public class ContatoDao {
 				
 				pstm.setString(2, contato.getTelefone());
 				pstm.setString(3, contato.getEmail());
-				pstm.setInt(4, contato.getId());
+				
+				pstm.setString(4, contato.getLogradouro());
+				pstm.setInt(5, contato.getId());
                 System.out.println( pstm ); 
 				
 				pstm.execute();
@@ -116,6 +120,7 @@ public class ContatoDao {
 				contato.setNome(rs.getString("nome"));
 				contato.setTelefone(rs.getString("telefone"));
 				contato.setEmail(rs.getString("email"));
+				contato.setLogradouro(rs.getString("logradouro") ); 
 				contatos.add(contato);
 			}
 			FabricaConexao.fechaConexao(conn, pstm, rs);
@@ -140,6 +145,7 @@ public class ContatoDao {
 				contato.setNome(rs.getString("nome"));
 				contato.setTelefone(rs.getString("telefone"));
 				contato.setEmail(rs.getString("email"));
+				contato.setLogradouro(rs.getString("logradouro"));
 			}
 			FabricaConexao.fechaConexao(conn, pstm, rs);
 		} catch (Exception e) {

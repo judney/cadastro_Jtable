@@ -5,6 +5,15 @@ public class Contato {
 	private String nome;
 	private String telefone;
 	private String email;
+	private String logradouro ; 
+
+	public String getLogradouro() {
+		return logradouro;
+	}
+
+	public void setLogradouro(String logradouro) {
+		this.logradouro = logradouro;
+	}
 
 	public Contato() {
 	}

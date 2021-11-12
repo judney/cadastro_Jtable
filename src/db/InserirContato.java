@@ -23,9 +23,11 @@ public class InserirContato extends JFrame {
 	private JLabel lbNome;
 	private JLabel lbTelefone;
 	private JLabel lbEmail;
+	private JLabel lbLogradouro; 
 	private JTextField txNome;
 	private JTextField txTelefone;
 	private JTextField txEmail;
+	private JTextField txLogradouro; 
 
 	public InserirContato(DefaultTableModel md) {
 		super("Contatos");
@@ -39,18 +41,22 @@ public class InserirContato extends JFrame {
 		lbNome = new JLabel("         Nome.:   ");
 		lbTelefone = new JLabel("         Telefone.:   ");
 		lbEmail = new JLabel("         Email.:   ");
+		lbLogradouro = new JLabel ("Logradouro.:");
 		txNome = new JTextField(10);
 		txTelefone = new JTextField();
 		txEmail = new JTextField();
+		txLogradouro = new JTextField() ; 
 
 		painelFundo = new JPanel();
-		painelFundo.setLayout(new GridLayout(4, 2, 2, 4));
+		painelFundo.setLayout(new GridLayout(6, 2, 2, 4));
 		painelFundo.add(lbNome);
 		painelFundo.add(txNome);
 		painelFundo.add(lbTelefone);
 		painelFundo.add(txTelefone);
 		painelFundo.add(lbEmail);
 		painelFundo.add(txEmail);
+		painelFundo.add(lbLogradouro) ; 
+		painelFundo.add(txLogradouro) ; 
 		painelFundo.add(btLimpar);
 		painelFundo.add(btSalvar);
 
@@ -69,6 +75,7 @@ public class InserirContato extends JFrame {
 			c.setNome(txNome.getText());
 			c.setTelefone(txTelefone.getText());
 			c.setEmail(txEmail.getText());
+			c.setLogradouro(txLogradouro.getText());
 
 			ContatoDao dao = new ContatoDao();
 			dao.inserir(c);
@@ -86,6 +93,7 @@ public class InserirContato extends JFrame {
 			txNome.setText("");
 			txTelefone.setText("");
 			txEmail.setText("");
+			txLogradouro.setText("");
 		}
 	}
 }

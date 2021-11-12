@@ -61,10 +61,13 @@ public class ListarContato extends JFrame {
 		modelo.addColumn("Nome");
 		modelo.addColumn("Telefone");
 		modelo.addColumn("Email");
+		modelo.addColumn("Logradouro");
 		tabela.getColumnModel().getColumn(0).setPreferredWidth(10);
 		tabela.getColumnModel().getColumn(1).setPreferredWidth(120);
-		tabela.getColumnModel().getColumn(1).setPreferredWidth(80);
-		tabela.getColumnModel().getColumn(1).setPreferredWidth(120);
+		tabela.getColumnModel().getColumn(2).setPreferredWidth(80);
+		tabela.getColumnModel().getColumn(3).setPreferredWidth(120);
+		tabela.getColumnModel().getColumn(4).setPreferredWidth(120);
+
 		pesquisar(modelo);
 	}
 
@@ -73,7 +76,7 @@ public class ListarContato extends JFrame {
 		ContatoDao dao = new ContatoDao();
 
 		for (Contato c : dao.getContatos()) {
-			modelo.addRow(new Object[] { c.getId(), c.getNome(), c.getTelefone(), c.getEmail() });
+			modelo.addRow(new Object[] { c.getId(), c.getNome(), c.getTelefone(), c.getEmail(), c.getLogradouro() });
 		}
 	}
 
